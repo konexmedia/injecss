@@ -37,7 +37,7 @@ var banner = ['/**',
 paths.sources = ['./index.js'];
 paths.test = ['./test.html'];
 paths.lintables = ['./*.js'];
-paths.component = './dist';
+paths.dist = './dist';
 
 gulp.task('lint', function () {
     return gulp.src(paths.lintables)
@@ -55,12 +55,12 @@ gulp.task('test', function () {
 gulp.task('component:build', function () {
     return gulp.src('./component.json')
         .pipe(component.scripts({
-            standalone: 'konexmedia.injecss'
+            standalone: pkg.name
         }))
         .pipe(rename(pkg.name + '.min.js'))
         .pipe(uglify())
         .pipe(header(banner, {pkg : pkg}))
-        .pipe(gulp.dest(paths.component));
+        .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('build', ['lint', 'component:build']);
