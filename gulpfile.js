@@ -54,7 +54,9 @@ gulp.task('test', function () {
 
 gulp.task('component:build', function () {
     return gulp.src('./component.json')
-        .pipe(component.scripts({}))
+        .pipe(component.scripts({
+            standalone: 'konexmedia.injecss'
+        }))
         .pipe(rename(pkg.name + '.min.js'))
         .pipe(uglify())
         .pipe(header(banner, {pkg : pkg}))
