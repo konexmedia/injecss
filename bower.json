@@ -17,6 +17,7 @@
       "test.html",
       "gulpfile.js",
       "package.json",
+      "component.json",
       "index.js"
   ]
 }
