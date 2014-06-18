@@ -29,7 +29,7 @@ Function which should be called after the stylesheet has been injected.
 ## Usage example
 
 ```javascript
-var injecss = require('injecss');
+var injecss = require('injecss'); // Browser: var injecss = konexmedia.injecss;
 
 injecss('styles/ie6.min.css', function (err) {
     if (err) {
