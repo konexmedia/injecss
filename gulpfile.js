@@ -15,7 +15,7 @@
 
 var gulp = require('gulp');
 var sequence = require('run-sequence');
-var component = require('gulp-component');
+var webmake = require('gulp-webmake');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
@@ -52,15 +52,15 @@ gulp.task('test', function () {
     });
 });
 
-gulp.task('component:build', function () {
-    return gulp.src('./component.json')
-        .pipe(component.scripts({}))
+gulp.task('webmake:build', function () {
+    return gulp.src(paths.sources)
+        .pipe(webmake())
         .pipe(rename(pkg.name + '.min.js'))
         .pipe(uglify())
         .pipe(header(banner, {pkg : pkg}))
         .pipe(gulp.dest(paths.component));
 });
 
-gulp.task('build', ['lint', 'component:build']);
+gulp.task('build', ['lint', 'webmake:build']);
 
 gulp.task('default', ['build']);
