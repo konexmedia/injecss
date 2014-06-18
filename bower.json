@@ -1,0 +1,22 @@
+{
+  "name": "injecss",
+  "version": "1.0.0-beta",
+  "description": "Component that helps you to inject stylesheets at runtime",
+  "author": {
+    "name": "André König",
+    "email": "andre.koenig@konexmedia.com"
+  },
+  "repository": {
+    "url": "git@github.com:konexmedia/race.git"
+  },
+  "license": "MIT",
+  "main": "./dist/injecss.min.js",
+  "ignore": [
+      "**/.*",
+      "node_modules",
+      "test.html",
+      "gulpfile.js",
+      "package.json",
+      "index.js"
+  ]
+}

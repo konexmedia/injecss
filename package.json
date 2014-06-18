@@ -1,0 +1,20 @@
+{
+  "name": "injecss",
+  "version": "1.0.0-beta",
+  "description": "Component that helps you to inject stylesheets at runtime",
+  "author": {
+    "name": "André König",
+    "email": "andre.koenig@konexmedia.com"
+  },
+  "repository": {
+    "url": "git@github.com:konexmedia/injecss.git"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.0",
+    "gulp-component": "^0.1.8",
+    "gulp-header": "^1.0.2",
+    "gulp-jshint": "^1.6.3",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^0.3.0"
+  }
+}
