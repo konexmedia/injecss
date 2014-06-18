@@ -14,7 +14,7 @@
 'use strict';
 
 var gulp = require('gulp');
-var component = require('gulp-component');
+var browserify = require('gulp-browserify');
 var sequence = require('run-sequence');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
@@ -46,23 +46,23 @@ gulp.task('lint', function () {
 });
 
 gulp.task('test', function () {
-    return sequence('component:build', function () {
+    return sequence('browserify:build', function () {
         return gulp.src(paths.test)
             .pipe(open());
     });
 });
 
-gulp.task('component:build', function () {
-    return gulp.src('./component.json')
-        .pipe(component.scripts({
-            standalone: pkg.name
+gulp.task('browserify:build', function () {
+    return gulp.src(paths.sources)
+        .pipe(browserify({
+            standalone: 'konexmedia.' + pkg.name
         }))
-        .pipe(rename(pkg.name + '.min.js'))
         .pipe(uglify())
+        .pipe(rename(pkg.name + '.min.js'))
         .pipe(header(banner, {pkg : pkg}))
         .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('build', ['lint', 'component:build']);
+gulp.task('build', ['lint', 'browserify:build']);
 
 gulp.task('default', ['build']);
