@@ -12,7 +12,7 @@ OR
 
 ## API
 
-### injecss(uri[, callback);
+### injecss(uri[, callback]);
 
 **Arguments**
 
