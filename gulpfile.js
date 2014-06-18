@@ -14,12 +14,13 @@
 'use strict';
 
 var gulp = require('gulp');
+var sequence = require('run-sequence');
 var component = require('gulp-component');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
 var header = require('gulp-header');
-var jasmine = require('gulp-jasmine');
+var open = require('gulp-open');
 
 var pkg = require('./package.json');
 
@@ -33,7 +34,8 @@ var banner = ['/**',
     ' *',
     ' */', ''].join('\n');
 
-paths.sources = ['./index.js', './index.spec.js'];
+paths.sources = ['./index.js'];
+paths.test = ['./test.html'];
 paths.lintables = ['./*.js'];
 paths.component = './dist';
 
@@ -44,8 +46,10 @@ gulp.task('lint', function () {
 });
 
 gulp.task('test', function () {
-    return gulp.src(paths.sources)
-        .pipe(jasmine());
+    return sequence('component:build', function () {
+        return gulp.src(paths.test)
+            .pipe(open());
+    });
 });
 
 gulp.task('component:build', function () {
@@ -57,6 +61,6 @@ gulp.task('component:build', function () {
         .pipe(gulp.dest(paths.component));
 });
 
-gulp.task('build', ['lint', 'test', 'component:build']);
+gulp.task('build', ['lint', 'component:build']);
 
 gulp.task('default', ['build']);

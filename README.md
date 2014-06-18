@@ -10,13 +10,21 @@ OR
 
     component install konexmedia/race
 
-OR
-
-    npm install konexmedia/race
-
 ## API
 
 ### injecss(uri[, callback);
+
+**Arguments**
+
+`uri`
+
+String
+
+The URI which points to the stylesheet that should be injected.
+
+`callback` (optional)
+
+Function which should be called after the stylesheet has been injected.
 
 ## Usage example
 
